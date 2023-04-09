@@ -4,6 +4,8 @@ function getTitle(title: string) {
     return title;
 }
 
+const test = "test"
+
 function App() {
     return (
         <div>
