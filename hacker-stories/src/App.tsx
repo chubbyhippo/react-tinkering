@@ -1,5 +1,16 @@
 import * as React from "react";
 
+type Story = {
+    objectID: number;
+    url: string;
+    title: string;
+    author: string;
+    num_comments: number;
+    points: number;
+};
+
+type Stories = Story[]
+
 const App = () => {
     const stories = [
         {
@@ -46,13 +57,21 @@ const Search = () => {
     </div>;
 };
 
-const List = (props: any) => {
+type ListProps = {
+    list: Stories;
+};
+
+const List: React.FC<ListProps> = (props) => {
     return <ul>
         {props.list.map((item: any) => <Item key={item.objectID} item={item}/>)}
     </ul>;
 };
 
-const Item = (props: any) => (
+type ItemProps = {
+    item: Story
+};
+
+const Item: React.FC<ItemProps> = (props) => (
     <li key={props.item.objectID}>
         <span>
             <a href={props.item.url}>{props.item.title}</a>
