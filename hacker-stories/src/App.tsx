@@ -48,9 +48,7 @@ const Search = () => {
 
 const List = (props: any) => {
     return <ul>
-        {props.list.map((item: any) => {
-            return <Item key={item.objectID} item={item}/>
-        })}
+        {props.list.map((item: any) => <Item key={item.objectID} item={item}/>)}
     </ul>;
 };
 
