@@ -49,16 +49,20 @@ const Search = () => {
 const List = (props: any) => {
     return <ul>
         {props.list.map((item: any) => {
-            return <li key={item.objectID}>
-                        <span>
-                            <a href={item.url}>{item.title}</a>
-                        </span>
-                <span>{item.author}</span>
-                <span>{item.num_comments}</span>
-                <span>{item.points}</span>
-            </li>;
+            return <Item key={item.objectID} item={item}/>
         })}
     </ul>;
 };
+
+const Item = (props: any) => (
+    <li key={props.item.objectID}>
+        <span>
+            <a href={props.item.url}>{props.item.title}</a>
+        </span>
+        <span>{props.item.author}</span>
+        <span>{props.item.num_comments}</span>
+        <span>{props.item.points}</span>
+    </li>
+);
 
 export default App;
