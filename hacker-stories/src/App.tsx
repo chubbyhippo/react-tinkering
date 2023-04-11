@@ -31,11 +31,7 @@ const App = () =>
 
         <hr/>
 
-        <Test/>
     </div>;
-
-const Test = () => <p>test</p>;
-
 
 const Search = () =>
     <div>
