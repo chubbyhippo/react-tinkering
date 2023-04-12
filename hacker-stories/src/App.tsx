@@ -1,5 +1,5 @@
 import * as React from "react";
-import {useState} from "react";
+import {FC, useState} from "react";
 
 type Story = {
     objectID: number;
@@ -47,7 +47,7 @@ const App = () => {
 };
 
 const Search = () => {
-
+    console.log('Search renders')
     const [searchTerm, setSearchTerm] = useState('');
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         console.log(event);
@@ -69,7 +69,7 @@ type ListProps = {
     list: Stories;
 };
 
-const List = (props: ListProps) => {
+const List: FC<ListProps> = (props) => {
     return <ul>
         {props.list.map((item: any) => <Item key={item.objectID} item={item}/>)}
     </ul>;
@@ -79,7 +79,7 @@ type ItemProps = {
     item: Story
 };
 
-const Item = (props: ItemProps) => (
+const Item: FC<ItemProps> = (props) => (
     <li key={props.item.objectID}>
         <span>
             <a href={props.item.url}>{props.item.title}</a>
