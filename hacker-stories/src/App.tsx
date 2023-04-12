@@ -1,5 +1,5 @@
 import * as React from "react";
-import {useState} from "react";
+import {ChangeEvent, useState} from "react";
 
 type Story = {
     objectID: number;
@@ -32,10 +32,14 @@ const App = () => {
         },
     ];
 
+    const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
+        console.log('handle search in App', event.target.value)
+    };
+
     return <div>
         <h1>My Hacker Stories</h1>
 
-        <Search/>
+        <Search onSearch={handleSearch}/>
 
         <hr/>
 
@@ -46,13 +50,19 @@ const App = () => {
     </div>;
 };
 
-const Search = () => {
+type SearchProps = {
+    onSearch: (event: ChangeEvent<HTMLInputElement>) => void;
+}
+
+const Search = ({onSearch}: SearchProps) => {
     console.log('Search renders')
     const [searchTerm, setSearchTerm] = useState('');
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         console.log(event);
-        console.log(event.target.value);
+        console.log('in Search', event.target.value);
         setSearchTerm(event.target.value)
+
+        onSearch(event);
     };
 
     return <div>
