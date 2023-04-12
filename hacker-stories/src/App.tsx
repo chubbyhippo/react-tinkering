@@ -1,5 +1,5 @@
 import * as React from "react";
-import {FC, useState} from "react";
+import {useState} from "react";
 
 type Story = {
     objectID: number;
@@ -69,9 +69,10 @@ type ListProps = {
     list: Stories;
 };
 
-const List: FC<ListProps> = (props) => {
+const List = ({list}: ListProps) => {
+    console.log('List renders')
     return <ul>
-        {props.list.map((item: any) => <Item key={item.objectID} item={item}/>)}
+        {list.map((item: any) => <Item key={item.objectID} item={item}/>)}
     </ul>;
 };
 
@@ -79,15 +80,19 @@ type ItemProps = {
     item: Story
 };
 
-const Item: FC<ItemProps> = (props) => (
-    <li key={props.item.objectID}>
-        <span>
-            <a href={props.item.url}>{props.item.title}</a>
-        </span>
-        <span>{props.item.author}</span>
-        <span>{props.item.num_comments}</span>
-        <span>{props.item.points}</span>
-    </li>
-);
+const Item = ({item}: ItemProps) => {
+    console.log('Item renders')
+    return (
+
+        <li key={item.objectID}>
+            <span>
+                <a href={item.url}>{item.title}</a>
+            </span>
+            <span>{item.author}</span>
+            <span>{item.num_comments}</span>
+            <span>{item.points}</span>
+        </li>
+    );
+};
 
 export default App;
