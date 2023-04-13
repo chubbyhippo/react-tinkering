@@ -78,7 +78,7 @@ type ListProps = {
 const List = ({list}: ListProps) => {
     console.log('List renders')
     return <ul>
-        {list.map((item: any) => <Item key={item.objectID} item={item}/>)}
+        {list.map((item) => <Item key={item.objectID} item={item}/>)}
     </ul>;
 };
 
