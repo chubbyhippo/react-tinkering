@@ -86,25 +86,17 @@ type ItemProps = {
     item: Story
 };
 
-const Item = ({
-                  item: {
-                      title,
-                      url,
-                      author,
-                      num_comments,
-                      points,
-                  },
-              }: ItemProps) => {
+const Item = ({item}: ItemProps) => {
     console.log('Item renders')
     return (
 
         <li>
             <span>
-                <a href={url}>{title}</a>
+                <a href={item.url}>{item.title}</a>
             </span>
-            <span>{author}</span>
-            <span>{num_comments}</span>
-            <span>{points}</span>
+            <span>{item.author}</span>
+            <span>{item.num_comments}</span>
+            <span>{item.points}</span>
         </li>
     );
 };
