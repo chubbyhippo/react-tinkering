@@ -34,7 +34,7 @@ const App = () => {
     ];
 
     const [searchTerm, setSearchTerm] = useState('React');
-    console.log('searchTerm =',searchTerm )
+    console.log('searchTerm =', searchTerm)
 
     const searchedStories = stories.filter(story =>
         story.title.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -86,17 +86,25 @@ type ItemProps = {
     item: Story
 };
 
-const Item = ({item}: ItemProps) => {
+const Item = ({
+                  item: {
+                      title,
+                      url,
+                      author,
+                      num_comments,
+                      points,
+                  },
+              }: ItemProps) => {
     console.log('Item renders')
     return (
 
-        <li key={item.objectID}>
+        <li>
             <span>
-                <a href={item.url}>{item.title}</a>
+                <a href={url}>{title}</a>
             </span>
-            <span>{item.author}</span>
-            <span>{item.num_comments}</span>
-            <span>{item.points}</span>
+            <span>{author}</span>
+            <span>{num_comments}</span>
+            <span>{points}</span>
         </li>
     );
 };
