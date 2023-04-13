@@ -13,6 +13,7 @@ type Story = {
 type Stories = Story[]
 
 const App = () => {
+    console.log('App renders')
     const stories = [
         {
             title: 'React',
@@ -32,8 +33,15 @@ const App = () => {
         },
     ];
 
+    const [searchTerm, setSearchTerm] = useState('');
+    console.log('searchTerm =',searchTerm )
+
+    const searchedStories = stories.filter(story =>
+        story.title.toLowerCase().includes(searchTerm.toLowerCase()));
+
     const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
         console.log('handle search in App', event.target.value)
+        setSearchTerm(event.target.value);
     };
 
     return <div>
@@ -43,7 +51,7 @@ const App = () => {
 
         <hr/>
 
-        <List list={stories}/>
+        <List list={searchedStories}/>
 
         <hr/>
 
@@ -56,22 +64,9 @@ type SearchProps = {
 
 const Search = ({onSearch}: SearchProps) => {
     console.log('Search renders')
-    const [searchTerm, setSearchTerm] = useState('');
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        console.log(event);
-        console.log('in Search', event.target.value);
-        setSearchTerm(event.target.value)
-
-        onSearch(event);
-    };
-
     return <div>
         <label htmlFor="search">Search: </label>
-        <input type="text" id="search" onChange={handleChange}/>
-
-        <p>
-            Searching for <strong>{searchTerm}</strong>
-        </p>
+        <input type="text" id="search" onChange={onSearch}/>
     </div>;
 };
 
