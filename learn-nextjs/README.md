@@ -1,1 +1,1 @@
-https://nextjs.org/learn/react-foundations/getting-started-with-react
+https://nextjs.org/learn/react-foundations/building-ui-with-components
